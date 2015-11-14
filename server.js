@@ -1,11 +1,12 @@
 var express = require('express');
 var session = require('express-session');
+var cookieParser = require('cookie-parser')
 var path = require("path");
 var bodyParser = require("body-parser");
 var app = express();
 var session;
 
-app.use(express.cookieParser());
+app.use(cookieParser());
 app.use(session({secret: '$#$##@#!'}));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
