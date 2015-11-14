@@ -1,32 +1,13 @@
-var http = require('http');
-var dispatcher = require('httpdispatcher');
+var express = require('express');
+var app = express();
 
-function handleRequest(request, response) {
-	try {
-	        //log the request on console
-	        console.log(request.url);
-	        //Disptach
-	        dispatcher.dispatch(request, response);
-	    } catch(err) {
-	        console.log(err);
-	    }
-}
-
-dispatcher.setStatic('resources');
-
-//A sample GET request    
-dispatcher.onGet("/page1", function(req, res) {
-    res.writeHead(200, {'Content-Type': 'text/plain'});
-    res.end('Page One');
-});    
-
-//A sample POST request
-dispatcher.onPost("/post1", function(req, res) {
-    res.writeHead(200, {'Content-Type': 'text/plain'});
-    res.end('Got Post Data');
+app.get('/', function (req, res) {
+  res.send('Hello World!');
 });
 
-var server = http.createServer(handleRequest);
+var server = app.listen(8080, function () {
+  var host = server.address().address;
+  var port = server.address().port;
 
-
-server.listen(8080);
+  console.log('Example app listening at http://%s:%s', host, port);
+});
