@@ -1,6 +1,12 @@
 var express = require('express');
 var path = require("path");
+var bodyParser = require("body-parser");
 var app = express();
+
+app.set('view engine', 'ejs');
+app.set('views', __dirname + '/views');
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded());
 
 app.use(express.static(__dirname + '/public'));
 
@@ -16,5 +22,5 @@ var server = app.listen(8080, function () {
 //---------------------------------Routes-----------------------------
 //Login Page
 app.get('/', function (req, res) {
-  res.send('Hello World!');
+  res.sendfile("index.html");
 });
