@@ -5,6 +5,7 @@ var bodyParser = require("body-parser");
 var app = express();
 var session;
 
+app.use(express.cookieParser());
 app.use(session({secret: '$#$##@#!'}));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
@@ -42,5 +43,12 @@ app.post('/login',function(req,res){
   console.log("User name = "+user_name+", password is "+password);
   session.username = user_name;
   session.password = password;
+  res.end("yes");
+});
+
+app.post('/leaderboard',function(req,res){
+  var user_name=req.body.user;
+  var password=req.body.password;
+  console.log("User name = "+user_name+", password is "+password);
   res.end("yes");
 });
