@@ -20,5 +20,5 @@ var server = app.listen(8080, function () {
 //---------------------------------Routes-----------------------------
 //Login Page
 app.get('/', function (req, res) {
-  res.sendfile("index.html");
+  res.sendfile("login.html");
 });
