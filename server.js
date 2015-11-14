@@ -4,7 +4,6 @@ var cookieParser = require('cookie-parser')
 var path = require("path");
 var bodyParser = require("body-parser");
 var app = express();
-var session;
 
 app.use(cookieParser());
 app.use(session({secret: '$#$##@#!'}));
@@ -27,9 +26,8 @@ var server = app.listen(8080, function () {
 //---------------------------------Routes-----------------------------
 //Login Page
 app.get('/', function (req, res) {
-  session = req.session;
-  console.log(session);
-  console.log("session name = "+session.username+", session password is "+session.password);
+  console.log(req.session);
+  console.log("session name = "+req.session.username+", session password is "+req.session.password);
   if(session.username) {
     res.redirect('/leaderboard');
   }
@@ -39,18 +37,13 @@ app.get('/', function (req, res) {
 });
 
 app.post('/login',function(req,res){
-  var user_name=req.body.user;
-  var password=req.body.password;
-  session.username = user_name;
-  session.password = password;
-    console.log("User name = "+session.username+", password is "+session.password);
-
+  req.session.username = req.body.user;
+  req.session.password = req.body.password;
+  console.log("User name = "+req.session.username+", password is "+req.session.password);
   res.end("yes");
 });
 
 app.post('/leaderboard',function(req,res){
-  var user_name=req.body.user;
-  var password=req.body.password;
   console.log("User name = "+user_name+", password is "+password);
   res.end("yes");
 });
