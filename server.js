@@ -20,5 +20,6 @@ var server = app.listen(8080, function () {
 //---------------------------------Routes-----------------------------
 //Login Page
 app.get('/', function (req, res) {
+  console.log('sending login file');
   res.sendfile("login.html");
 });
