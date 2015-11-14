@@ -21,5 +21,5 @@ var server = app.listen(8080, function () {
 //Login Page
 app.get('/login', function (req, res) {
   console.log('sending login file');
-  res.sendFile("login.html");
+  res.sendFile('public/login.html' , { root : __dirname});
 });
