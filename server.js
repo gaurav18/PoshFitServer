@@ -27,8 +27,8 @@ var server = app.listen(8080, function () {
 //---------------------------------Routes-----------------------------
 //Login Page
 app.get('/', function (req, res) {
-  console.log('check session');
   session = req.session;
+  colsole.log(session);
   console.log("session name = "+session.username+", session password is "+session.password);
   if(session.username) {
     res.redirect('/leaderboard');
@@ -41,9 +41,10 @@ app.get('/', function (req, res) {
 app.post('/login',function(req,res){
   var user_name=req.body.user;
   var password=req.body.password;
-  console.log("User name = "+user_name+", password is "+password);
   session.username = user_name;
   session.password = password;
+    console.log("User name = "+session.username+", password is "+session.password);
+
   res.end("yes");
 });
 
