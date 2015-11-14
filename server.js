@@ -19,7 +19,7 @@ var server = app.listen(8080, function () {
 
 //---------------------------------Routes-----------------------------
 //Login Page
-app.get('/login', function (req, res) {
+app.get('/', function (req, res) {
   console.log('sending login file');
   res.sendFile('public/login.html' , { root : __dirname});
 });
