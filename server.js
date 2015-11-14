@@ -28,7 +28,7 @@ var server = app.listen(8080, function () {
 //Login Page
 app.get('/', function (req, res) {
   session = req.session;
-  colsole.log(session);
+  console.log(session);
   console.log("session name = "+session.username+", session password is "+session.password);
   if(session.username) {
     res.redirect('/leaderboard');
