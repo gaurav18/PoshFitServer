@@ -11,6 +11,7 @@ var connection = mysql.createConnection({
   user     : 'admin',
   password : 'poshfit2015',
   database : 'poshfitDb'
+  port     :'1433'
 });
 
 console.log(connection);
