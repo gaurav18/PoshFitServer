@@ -9,7 +9,7 @@ var app = express();
 var connection = mysql.createConnection({
   host     : 'localhost',
   user     : 'admin',
-  password : 'poshfit2015',
+  password : '',
   database : 'poshfitDb'
 });
 
