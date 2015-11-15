@@ -1,9 +1,25 @@
-var express = require('express');
-var session = require('express-session');
-var cookieParser = require('cookie-parser')
-var path = require("path");
-var bodyParser = require("body-parser");
+var express       = require('express');
+var session       = require('express-session');
+var cookieParser  = require('cookie-parser')
+var mysql         = require('mysql');
+var path          = require("path");
+var bodyParser    = require("body-parser");
+
 var app = express();
+var connection = mysql.createConnection({
+  host     : 'localhost',
+  user     : 'admin',
+  password : 'poshfit2015',
+  database : 'poshfitDb'
+});
+
+connection.connect(function(err){
+if(!err) {
+    console.log("Database is connected ... \n\n");  
+} else {
+    console.log("Error connecting database ... \n\n");  
+}
+});
 
 app.use(cookieParser());
 app.use(session({secret: '$#$##@#!'}));
@@ -28,7 +44,7 @@ var server = app.listen(8080, function () {
 app.get('/', function (req, res) {
   console.log(req.session);
   console.log("session name = "+req.session.username+", session password is "+req.session.password);
-  if(session.username) {
+  if(req.session.username) {
     res.redirect('/leaderboard');
   }
   else{
@@ -44,6 +60,5 @@ app.post('/login',function(req,res){
 });
 
 app.post('/leaderboard',function(req,res){
-  console.log("User name = "+user_name+", password is "+password);
   res.end("yes");
 });
