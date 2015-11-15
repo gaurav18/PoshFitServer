@@ -8,7 +8,7 @@ var bodyParser    = require("body-parser");
 var app = express();
 var connection = mysql.createConnection({
   host     : '127.0.0.1',
-  user     : 'admin',
+  user     : 'ec2-user@localhost',
   password : '',
   database : 'poshfitDb'
 });
