@@ -13,6 +13,8 @@ var connection = mysql.createConnection({
   database : 'poshfitDb'
 });
 
+console.log(connection);
+
 connection.connect(function(err){
 if(!err) {
     console.log("Database is connected ... \n\n");  
