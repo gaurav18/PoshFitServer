@@ -65,7 +65,7 @@ var validateUser = function(userName, password) {
 }
 
 //---------------------------------Routes-----------------------------
-//Login Page
+//Home Page
 app.get('/', function (req, res) {
   console.log(req.session);
   console.log("session name = "+req.session.username+", session password is "+req.session.password);
@@ -77,12 +77,16 @@ app.get('/', function (req, res) {
   }
 });
 
+//Post login info
 app.post('/login',function(req,res){
   req.session.username = req.body.user;
   req.session.password = req.body.password;
   console.log("User name = "+req.session.username+", password is "+req.session.password);
-  validateUser(req.body.user, req.body.password);
-  res.end("yes");
+  if(validateUser(req.body.user, req.body.password)) {
+    res.end("yes");
+  } else {
+    res.end("no");
+  }
 });
 
 app.post('/leaderboard',function(req,res){
