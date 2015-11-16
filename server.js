@@ -43,6 +43,27 @@ var server = app.listen(8080, function () {
   console.log('Example app listening at http://%s:%s', host, port);
 });
 
+//Validate user
+var validateUser = function(userName, password) {
+  var queryString = 'SELECT * FROM user WHERE email = ' + 
+                   connection.escape(userName);
+  connection.query(queryString, function(err, rows, fields) {
+    val found = 0; 
+    if (!err) {
+      console.log('The solution is: ', rows);
+      if(rows.length == 1) {
+        if(rows.email == useName && rows.password == password) {
+          found = 1;
+        }
+      }
+    }
+    else {
+      console.log('Error while performing Query.');
+    }
+    return found;
+  });  
+}
+
 //---------------------------------Routes-----------------------------
 //Login Page
 app.get('/', function (req, res) {
@@ -60,6 +81,7 @@ app.post('/login',function(req,res){
   req.session.username = req.body.user;
   req.session.password = req.body.password;
   console.log("User name = "+req.session.username+", password is "+req.session.password);
+  validateUser(req.body.user, req.body.password);
   res.end("yes");
 });
 
