@@ -48,7 +48,7 @@ var validateUser = function(userName, password) {
   var queryString = 'SELECT * FROM user WHERE email = ' + 
                    connection.escape(userName);
   connection.query(queryString, function(err, rows, fields) {
-    val found = 0; 
+    var found = 0; 
     if (!err) {
       console.log('The solution is: ', rows);
       if(rows.length == 1) {
