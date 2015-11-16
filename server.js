@@ -84,7 +84,8 @@ app.post('/login',function(req,res){
   req.session.username = req.body.user;
   req.session.password = req.body.password;
   console.log("User name = "+req.session.username+", password is "+req.session.password);
-  if(validateUser(req.body.user, req.body.password)) {
+  var found = validateUser(req.body.user, req.body.password); 
+  if(found == 1) {
     res.end("yes");
   } else {
     res.end("no");
