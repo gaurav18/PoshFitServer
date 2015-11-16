@@ -52,7 +52,7 @@ var validateUser = function(userName, password) {
     if (!err) {
       console.log('The solution is: ', rows);
       if(rows.length == 1) {
-        if(rows.email == useName && rows.password == password) {
+        if(rows.email == userName && rows.password == password) {
           found = 1;
         }
       }
