@@ -98,6 +98,7 @@ app.get('/', function (req, res) {
 app.get('/Activities', function (req, res) {
   function callback() {
     function success(result) {
+      console.log("Step 3\n\n");  
       res.send(result);
     };
     function error(err) {
