@@ -67,14 +67,16 @@ var validateUser = function(userName, password) {
 }
 
 //test to confirm json results from db query
-var getAllActivitiesInfo = function(callback) {
+var getAllActivitiesInfo = function(cb) {
   var queryString = 'SELECT * FROM activityInfo';
   connection.query(queryString, function(err, rows, fields) {
     if (!err) {
-      return callback.success(rows);
+      console.log("Step 2\n\n");  
+      return cb.success(rows);
     }
     else {
-      return callback.error();
+      console.log("Step 3\n\n");  
+      return cb.error();
     }
   });  
 }
@@ -102,6 +104,7 @@ app.get('/Activities', function (req, res) {
       res.send(err);
     };
   }
+  console.log("Step1\n\n");  
   getAllActivitiesInfo( callback);
 });
 
