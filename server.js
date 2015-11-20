@@ -74,7 +74,7 @@ var getAllActivitiesInfo = function(callback) {
       return callback.success(rows);
     }
     else {
-      retun callback.error();
+      return callback.error();
     }
   });  
 }
