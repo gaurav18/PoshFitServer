@@ -94,7 +94,7 @@ app.get('/', function (req, res) {
 
 //Home Page
 app.get('/Activities', function (req, res) {
-  function callback() = {
+  function callback() {
     function success(result) {
       res.send(result);
     };
