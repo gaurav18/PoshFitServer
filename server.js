@@ -66,6 +66,19 @@ var validateUser = function(userName, password) {
   });  
 }
 
+//test to confirm json results from db query
+var getAllActivitiesInfo = function(callback) {
+  var queryString = 'SELECT * FROM activityInfo';
+  connection.query(queryString, function(err, rows, fields) {
+    if (!err) {
+      return callback.success(rows);
+    }
+    else {
+      retun callback.error();
+    }
+  });  
+}
+
 //---------------------------------Routes-----------------------------
 //Home Page
 app.get('/', function (req, res) {
@@ -77,6 +90,19 @@ app.get('/', function (req, res) {
   else{
     res.sendFile('public/login.html' , { root : __dirname});
   }
+});
+
+//Home Page
+app.get('/Activities', function (req, res) {
+  function callback() = {
+    function success(result) {
+      res.send(result);
+    };
+    function error(err) {
+      res.send(err);
+    };
+  }
+  getAllActivitiesInfo( callback);
 });
 
 //Post login info
