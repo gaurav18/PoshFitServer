@@ -97,7 +97,7 @@ app.get('/', function (req, res) {
 
 //Home Page
 app.get('/Activities', function (req, res) {
-  function callback() {
+  var callback = {
     this.success = function success(result) {
       console.log("Step 3\n\n");  
       res.send(result);
