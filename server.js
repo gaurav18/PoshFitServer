@@ -72,6 +72,7 @@ var getAllActivitiesInfo = function(cb) {
   connection.query(queryString, function(err, rows, fields) {
     if (!err) {
       console.log("Step 2\n\n");  
+      console.log(cb);  
       return cb.success(rows);
     }
     else {
