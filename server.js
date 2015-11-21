@@ -100,7 +100,7 @@ app.get('/Activities', function (req, res) {
   var callback = {
     success : function success(result) {
       console.log("Step 3\n\n");  
-      res.send(result);
+      res.json(result);
     },
     error : function error(err) {
       res.send(err);
