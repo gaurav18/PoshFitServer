@@ -98,11 +98,11 @@ app.get('/', function (req, res) {
 //Home Page
 app.get('/Activities', function (req, res) {
   var callback = {
-    this.success = function success(result) {
+    success : function success(result) {
       console.log("Step 3\n\n");  
       res.send(result);
     };
-    this.error = function error(err) {
+    error : function error(err) {
       res.send(err);
     };
   }
