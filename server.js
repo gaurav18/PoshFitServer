@@ -101,11 +101,11 @@ app.get('/Activities', function (req, res) {
     success : function success(result) {
       console.log("Step 3\n\n");  
       res.send(result);
-    };
+    },
     error : function error(err) {
       res.send(err);
-    };
-  }
+    }
+  };
   console.log("Step1\n\n");  
   getAllActivitiesInfo( callback);
 });
